@@ -1,32 +1,14 @@
-{% load static %}
+{% extends 'ecommerce/base.html'  %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'ecommerce/styles.css' %} ">
-    <title>Index template</title>
-</head>
-<body>
-    <nav>
-        <div>
-            <div>
-                <div class="flex">
-                    <img class="h-8 w-8" src="{% static 'ecommerce/images/shop-logo.png' %}" alt="logo" srcset="">
-                    <span class="text-xl">Pro Shop</span>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <h1>This is index template</h1>
 
-    {% for product in products %}
-        <a href="{% url 'ecommerce:detail' product.id %}">
-        Имя: {{product.name}} | Цена: {{product.price}} </h4>
-        <a>
-        <br>
+{% block content %}
+
+
+{% for product in products %}
+<a href="{% url 'ecommerce:detail' product.id %}">
+  Имя: {{product.name}} | Цена: {{product.price}} </h4>
+  <a>
+    <br>
     {% endfor %}
 
-</body>
-</html>
+{% endblock content %}

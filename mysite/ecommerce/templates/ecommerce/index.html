@@ -7,7 +7,8 @@
 {% for product in products %}
 <a href="{% url 'ecommerce:detail' product.id %}">
   Имя: {{product.name}} | Цена: {{product.price}} </h4>
-  <a>
+    <img src="{{product.image.url}}" alt="image for {{product.name}}">
+<a>
     <br>
     {% endfor %}
 

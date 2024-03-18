@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Product
 
 def index(request):
@@ -37,3 +37,18 @@ def add_product(request):
         item = Product(name=name, price=price, description=description, image=image)
         item.save()
     return render(request, "ecommerce/addProduct.html")
+
+
+def update_product(request, product_id):
+    product = Product.objects.get(id=product_id)
+    if request.method == "POST":
+        product.name = request.POST.get("name")
+        product.price = request.POST.get("price")
+        product.description = request.POST.get("description")
+        product.image = request.FILES.get("upload", product.image)
+        product.save()
+        return redirect("/")
+    context = {
+        "product": product
+    }
+    return render(request, "ecommerce/updateProduct.html", context=context)

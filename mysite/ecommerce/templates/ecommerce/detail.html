@@ -1,5 +1,7 @@
 {% extends 'ecommerce/base.html' %}
+
 {% load humanize %}
+
 {% block content %}
 
 <div class="flex p-10 w-full h-200">
@@ -8,6 +10,7 @@
         <p class="mt-5">{{ product.name }}</p>
         <p class="mt-5 text-green-500">$ {{ product.price | intcomma }}</p>
         <p class="mt-5 text-gray-600">{{ product.description }}</p>
+        <button class="bg-green-500 text-white mt-[50px]"><a href="{% url 'ecommerce:update_product' product.id %}">Update Item</a></button>
     </div>
 </div>
 

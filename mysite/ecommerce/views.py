@@ -38,7 +38,6 @@ def add_product(request):
         item.save()
     return render(request, "ecommerce/addProduct.html")
 
-
 def update_product(request, product_id):
     product = Product.objects.get(id=product_id)
     if request.method == "POST":
@@ -52,3 +51,13 @@ def update_product(request, product_id):
         "product": product
     }
     return render(request, "ecommerce/updateProduct.html", context=context)
+
+def delete_product(request, product_id):
+    product = Product.objects.get(id=product_id)
+    if request.method == "POST":
+        product.delete()
+        return redirect("/")
+    context = {
+        "product": product
+    }
+    return render(request, "ecommerce/deleteProduct.html", context=context)

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import add_product, index, contacts, indexProduct, update_product, delete_product
+from .views import add_product, index, contacts, indexProduct, update_product, delete_product, about
 
 app_name="ecommerce"
 
@@ -11,7 +11,9 @@ urlpatterns = [
     path('<int:product_id>/', indexProduct, name="detail"),
 
     #  http://127.0.0.1:8000/contacts/
-    path('contacts/', contacts),
+    path('contacts/', contacts, name='contacts'),
+
+    path('about/', about, name='about'),
 
     #  http://127.0.0.1:8000/addproduct/
     path('addproduct/', add_product, name='add_product'),

@@ -28,6 +28,13 @@ def contacts(request):
     """
     return render(request, "ecommerce/contacts.html")
 
+def about(request):
+    """
+    Страница о сайте
+
+    """
+    return render(request, "ecommerce/about.html")
+
 def add_product(request):
     if request.method == "POST":
         name = request.POST.get("name")
